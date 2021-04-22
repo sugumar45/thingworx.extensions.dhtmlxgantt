@@ -100,18 +100,7 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
         ganttConfig: {
           description: "",
           baseType: "JSON",
-          defaultValue: {
-            readonly: true, //읽기전용
-            drag_progress: false, //진척률 드래그
-            date_format: "%Y/%m/%d", //date format
-            date_grid: "%Y/%m/%d", //date format
-            task_date: "%Y/%m/%d", //date format
-            open_tree_initially: true, //초기에 gantt tree 열기
-            work_time: true, //주말 제외 duration
-            show_progress: true, //진척률 표시
-            row_height: 40,
-            task_height: 16,
-          },
+          defaultValue: {},
           isVisible: false,
         },
         ganttData: {

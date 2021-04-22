@@ -1,5 +1,6 @@
 /.settings
 /twx-lib
+/build/distributions/*.zip
 
 .classpath
 .project
