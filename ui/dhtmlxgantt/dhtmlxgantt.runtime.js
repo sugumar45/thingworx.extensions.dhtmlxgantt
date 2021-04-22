@@ -295,6 +295,11 @@ TW.Runtime.Widgets.dhtmlxgantt = function () {
     if (updatePropertyInfo.TargetProperty === "ganttData") {
       const datas = updatePropertyInfo.RawDataFromInvoke;
       gantt.parse(datas);
+    } else if (updatePropertyInfo.TargetProperty === "markers") {
+      const markers = updatePropertyInfo.RawDataFromInvoke.array;
+      markers.forEach((marker) => {
+        gantt.addMarker(marker);
+      });
     }
   };
 };
