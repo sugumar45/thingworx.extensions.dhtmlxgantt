@@ -12,8 +12,16 @@
                 <FileResource description="" file="dhtmlxgantt.ide.css" isDevelopment="true" isRuntime="false" type="CSS"/>
                 <FileResource description="" file="dhtmlxgantt.runtime.js" isDevelopment="false" isRuntime="true" type="JS"/>
                 <FileResource description="" file="dhtmlxgantt.runtime.css" isDevelopment="false" isRuntime="true" type="CSS"/>
+
                 <FileResource description="" file="lib/dhtmlxgantt/js/dhtmlxgantt.js" isDevelopment="true" isRuntime="true" type="JS"/>
                 <FileResource description="" file="lib/dhtmlxgantt/css/dhtmlxgantt.css" isDevelopment="true" isRuntime="true" type="CSS"/>
+                
+                <FileResource description="" file="lib/codemirror/css/codemirror.css" isDevelopment="true" isRuntime="false" type="CSS"/>
+                <FileResource description="" file="lib/codemirror/js/codemirror.js" isDevelopment="true" isRuntime="false" type="JS"/>
+                <FileResource description="" file="lib/codemirror/js/mode/javascript/javascript.js" isDevelopment="true" isRuntime="false" type="JS"/>
+                <FileResource description="" file="lib/codemirror/js/keymap/sublime.js" isDevelopment="true" isRuntime="false" type="JS"/>
+                <FileResource description="" file="lib/codemirror/js/addon/active-line.js" isDevelopment="true" isRuntime="false" type="JS"/>
+                
             </UIResources>
         </Widget>
     </Widgets>

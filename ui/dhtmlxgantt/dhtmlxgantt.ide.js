@@ -115,12 +115,18 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
           isBindingTarget: true,
           isEditable: false,
         },
+        tooltip: {
+          description: "",
+          baseType: "STRING",
+          defaultValue: "",
+          isVisible: false,
+        },
       },
     };
   };
 
   const changeMode = (developermode) => {
-    const DEVMODE = ["ganttConfig"];
+    const DEVMODE = ["ganttConfig", "tooltip"];
     const allWidgetProps = thisWidget.allWidgetProperties().properties;
     DEVMODE.forEach((dev) => {
       allWidgetProps[dev].isVisible = developermode;

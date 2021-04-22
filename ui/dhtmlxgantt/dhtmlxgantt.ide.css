@@ -191,3 +191,7 @@ main section.dhtmlxgantt-dialog-header-config ul li {
 .dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-column-config table select {
   padding: 4px;
 }
+
+.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config article {
+  border: 1px solid var(--dark);
+}

@@ -25,6 +25,7 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
   ];
 
   let thisWidget;
+  let tooltipCode;
 
   this.renderDialogHtml = (widgetObj) => {
     thisWidget = widgetObj;
@@ -36,7 +37,7 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
 
         <header>
             <ul>
-                <li class="active">
+                <li>
                     <span id="${BASEID}-header">
                       header
                     </span>
@@ -44,6 +45,11 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
                 <li>
                     <span id="${BASEID}-column">
                       column
+                    </span>
+                </li>
+                <li class="active">
+                    <span id="${BASEID}-tooltip">
+                      tool-tip
                     </span>
                 </li>
                 <li class="inVisible">
@@ -55,8 +61,9 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
         </header>
 
         <main>
-            <section class="${BASEID}-header-config"></section>
+            <section class="${BASEID}-header-config inVisible"></section>
             <section class="${BASEID}-column-config inVisible"></section>
+            <section class="${BASEID}-tooltip-config"></section>
             <section class="${BASEID}-config-config inVisible">config</section>
         </main>
 
@@ -128,6 +135,10 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     /* Column Tab Add START */
     columnDialogSectionAppend();
     /* Column Tab Add END */
+
+    /* tooltip Tab Add START */
+    tooltipDialogSectionAppend();
+    /* tooltip Tab Add END */
   };
 
   const headerDialogSectionAppend = () => {
@@ -335,6 +346,30 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     return trElement;
   };
 
+  const tooltipDialogSectionAppend = () => {
+    const tooltipValue = thisWidget.getProperty("tooltip");
+
+    const sectionElement = this.jqElement.querySelector(
+      `.${BASEID} main section[class*=-tooltip-config]`
+    );
+
+    const articleElement = document.createElement("article");
+    sectionElement.appendChild(articleElement);
+
+    tooltipCode = CodeMirror(articleElement, {
+      value: tooltipValue,
+      lineNumbers: true,
+      mode: "javascript",
+      keyMap: "sublime",
+      autoCloseBrackets: true,
+      matchBrackets: true,
+      styleActiveLine: true,
+      showCursorWhenSelecting: true,
+      theme: "default",
+      tabSize: 2,
+    });
+  };
+
   this.updateProperties = (widgetObj) => {
     /* Headers Set Property START */
     const updateHeaders = { left: [], right: [] };
@@ -386,6 +421,10 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     });
     widgetObj.setProperty("columns", updateColumns);
     /* columns Set Property END */
+
+    /* tooltip Set Property END */
+    widgetObj.setProperty("tooltip", tooltipCode.getValue());
+    /* tooltip Set Property END */
 
     return true;
   };

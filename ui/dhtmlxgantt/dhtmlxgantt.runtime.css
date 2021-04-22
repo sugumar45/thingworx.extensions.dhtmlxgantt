@@ -1,5 +1,9 @@
 /* Place custom CSS styling for dhtmlxgantt widget at runtime in this file */
 
+.gantt_tooltip {
+  z-index: 9999;
+}
+
 .widget-dhtmlxgantt {
   display: flex;
   flex-direction: column;

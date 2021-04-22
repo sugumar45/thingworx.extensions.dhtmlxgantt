@@ -288,6 +288,15 @@ TW.Runtime.Widgets.dhtmlxgantt = function () {
       marker: true,
     });
 
+    /* Gantt tooltip */
+    const tooltipCode = thisWidget.getProperty("tooltip");
+    gantt.templates.tooltip_text = new Function(
+      "start_date",
+      "end_date",
+      "task",
+      tooltipCode
+    );
+
     gantt.ext.zoom.init(ZOMCONFIG);
     gantt.init(`${jqElementId}__ganttChart`);
   };

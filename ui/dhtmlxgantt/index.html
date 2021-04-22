@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="lib/dhtmlxgantt/css/dhtmlxgantt.css">
     <script src="lib/dhtmlxgantt/js/dhtmlxgantt.js"></script>
 
+    <link rel="stylesheet" href="lib/codemirror/css/codemirror.css">
+
+    <script src="lib/codemirror/js/codemirror.js"></script>
+    <script src="lib/codemirror/js/mode/javascript/javascript.js"></script>
+    <script src="lib/codemirror/js/keymap/sublime.js"></script>
+    <script src="lib/codemirror/js/addon/active-line.js"></script>
+
     <link rel="stylesheet" href="dhtmlxgantt.ide.css">
 
 </head>
@@ -27,9 +34,14 @@
                     header
                 </span>
             </li>
-            <li class="active">
+            <li>
                 <span id="dhtmlxgantt-dialog-column">
                     column
+                </span>
+            </li>
+            <li class="active">
+                <span id="dhtmlxgantt-dialog-tooltip">
+                    tool-tip
                 </span>
             </li>
             <li class="inVisible">
@@ -42,7 +54,8 @@
 
     <main>
         <section class="dhtmlxgantt-dialog-header-config inVisible">header</section>
-        <section class="dhtmlxgantt-dialog-column-config">
+        <section class="dhtmlxgantt-dialog-column-config inVisible">column
+            <!--
             <table>
                 <colgroup>
                     <col style="width: 4%">
@@ -234,20 +247,54 @@
 
                 </tbody>
             </table>
+            -->
+        </section>
+        <section class="dhtmlxgantt-dialog-tooltip-config" style="height: 80vh;">
+            <button class="done">Done</button>
+            <button class="run">Run</button>
+            function tooltip(start_date, end_date, task) =
+            <article></article>
         </section>
         <section class="dhtmlxgantt-dialog-config-config inVisible">config</section>
     </main>
 
-    <div style="height: 80vh;" id="gantt">
-
-    </div>
-
     <script>
+        const value = "{ \
+	return a+b+c; \
+}";
+        document.addEventListener("DOMContentLoaded", (event) => {
+            //console.log(document.querySelector(`.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config article`));
+            const mirror = CodeMirror(
+                //document.querySelector(`.dhtmlxgantt-dialog main section dhtmlxgantt-dialog-tooltip-config`),
+                document.querySelector(`.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config article`),
+                {
+                    value: value,
+                    lineNumbers: true,
+                    mode: "javascript",
+                    keyMap: "sublime",
+                    autoCloseBrackets: true,
+                    matchBrackets: true,
+                    showCursorWhenSelecting: true,
+                    styleActiveLine: true,
+                    theme: "default",
+                    tabSize: 2
+                }
+            );
+            window.mirror = mirror;
+            let fn;
+            document.querySelector(`.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config button.done`).addEventListener("click", (event) => {
+                const fn_string = mirror.getValue();
+                console.log(fn_string.trim());
+                fn = new Function('a', 'b', 'c', fn_string.trim());
+            });
+            document.querySelector(`.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config button.run`).addEventListener("click", event => {
+                console.log(fn(1, 2, 3));
+            })
+        })
+        /*
         const BASEID = "dhtmlxgantt-dialog";
-        //console.log(document.querySelectorAll(".dhtmlxgantt-dialog header ul li span"))
         document.querySelectorAll(".dhtmlxgantt-dialog header ul li span").forEach(element => {
             element.addEventListener("click", (event) => {
-                console.log(event);
                 document
                     .querySelectorAll(`.${BASEID} header ul li`)
                     .forEach((li) => {
@@ -266,6 +313,7 @@
                     .classList.remove("inVisible");
             })
         })
+        */
     </script>
 
 </body>
