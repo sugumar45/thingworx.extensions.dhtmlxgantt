@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="lib/dhtmlxgantt/css/dhtmlxgantt.css">
+    <script src="lib/dhtmlxgantt/js/dhtmlxgantt.js"></script>
+
+    <link rel="stylesheet" href="dhtmlxgantt.ide.css">
+
+</head>
+
+<body class="dhtmlxgantt-dialog">
+
+    <h2>
+        DhtmlxGantt Setting
+    </h2>
+
+    <header>
+        <ul>
+            <li>
+                <span id="dhtmlxgantt-dialog-header">
+                    header
+                </span>
+            </li>
+            <li class="active">
+                <span id="dhtmlxgantt-dialog-column">
+                    column
+                </span>
+            </li>
+            <li class="inVisible">
+                <span id="dhtmlxgantt-dialog-config">
+                    config
+                </span>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="dhtmlxgantt-dialog-header-config inVisible">header</section>
+        <section class="dhtmlxgantt-dialog-column-config">
+            <table>
+                <colgroup>
+                    <col style="width: 4%">
+                    <col style="width: 13%">
+                    <col style="width: 13%">
+                    <col style="width: 13%">
+                    <col style="width: 13%">
+                    <col style="width: 13%">
+                    <col style="width: 13%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>
+                            <button>
+                                +
+                            </button>
+                        </th>
+                        <th>
+                            label
+                        </th>
+                        <th>
+                            name
+                        </th>
+                        <th>
+                            resize
+                        </th>
+                        <th>
+                            tree
+                        </th>
+                        <th>
+                            width
+                        </th>
+                        <th>
+                            align
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button>
+                                –
+                            </button>
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <select>
+                                <option value="">left</option>
+                                <option value="">center</option>
+                                <option value="">right</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <button>
+                                –
+                            </button>
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <select>
+                                <option value="">left</option>
+                                <option value="">center</option>
+                                <option value="">right</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <button>
+                                –
+                            </button>
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <select>
+                                <option value="">left</option>
+                                <option value="">center</option>
+                                <option value="">right</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <button>
+                                –
+                            </button>
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <select>
+                                <option value="">left</option>
+                                <option value="">center</option>
+                                <option value="">right</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <button>
+                                –
+                            </button>
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+                        <td>
+                            <input type="text" />
+                        </td>
+                        <td>
+                            <select>
+                                <option value="">left</option>
+                                <option value="">center</option>
+                                <option value="">right</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+        <section class="dhtmlxgantt-dialog-config-config inVisible">config</section>
+    </main>
+
+    <div style="height: 80vh;" id="gantt">
+
+    </div>
+
+    <script>
+        const BASEID = "dhtmlxgantt-dialog";
+        //console.log(document.querySelectorAll(".dhtmlxgantt-dialog header ul li span"))
+        document.querySelectorAll(".dhtmlxgantt-dialog header ul li span").forEach(element => {
+            element.addEventListener("click", (event) => {
+                console.log(event);
+                document
+                    .querySelectorAll(`.${BASEID} header ul li`)
+                    .forEach((li) => {
+                        li.classList.remove("active");
+                    });
+                document
+                    .querySelectorAll(`.${BASEID} main section`)
+                    .forEach((section) => {
+                        section.classList.add("inVisible");
+                    });
+
+                const { id } = event.target;
+                event.target.parentNode.classList.add("active");
+                document
+                    .querySelector(`.${BASEID} main section.${id}-config`)
+                    .classList.remove("inVisible");
+            })
+        })
+    </script>
+
+</body>
+
+</html>

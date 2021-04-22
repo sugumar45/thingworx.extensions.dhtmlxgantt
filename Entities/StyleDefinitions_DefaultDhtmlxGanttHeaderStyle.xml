@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="1"
+ universal="password">
+    <StyleDefinitions>
+        <StyleDefinition
+         description=""
+         documentationContent=""
+         homeMashup=""
+         name="DefaultDhtmlxGanttHeaderStyle"
+         projectName="PTCDefaultProject"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <content>
+            <![CDATA[
+            {
+              "backgroundColor" : "rgba(192,192,192,1)",
+              "displayString" : "DefaultDhtmlxGanttHeaderStyle",
+              "fontEmphasisBold" : true,
+              "fontEmphasisItalic" : false,
+              "fontEmphasisUnderline" : false,
+              "foregroundColor" : "rgba(0,0,0,1)",
+              "image" : "",
+              "lineColor" : "",
+              "lineStyle" : "solid",
+              "lineThickness" : 1,
+              "secondaryBackgroundColor" : "",
+              "textSize" : "large"
+            }
+            ]]>
+            </content>
+        </StyleDefinition>
+    </StyleDefinitions>
+</Entities>
