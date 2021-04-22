@@ -1,6 +1,7 @@
 /.settings
 /twx-lib
 /build/distributions/*.zip
+/.vscode
 
 .classpath
 .project
