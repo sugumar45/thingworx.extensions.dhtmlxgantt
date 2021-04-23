@@ -355,8 +355,24 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
       `.${BASEID} main section[class*=-tooltip-config]`
     );
 
-    const commentElement = document.createElement("h3");
-    sectionElement.appendChild(commentElement);
+    const paragraphElement = document.createElement("p");
+
+    const fnFontElement = document.createElement("font");
+    fnFontElement.classList.add("fn");
+    fnFontElement.innerText = "function";
+    paragraphElement.appendChild(fnFontElement);
+
+    const nameFontElement = document.createElement("font");
+    nameFontElement.classList.add("fnname");
+    nameFontElement.innerText = "tooltip";
+    paragraphElement.appendChild(nameFontElement);
+
+    const parameterElement = document.createElement("span");
+    parameterElement.class = "";
+    parameterElement.innerText = "(start_date, end_date, task)";
+    paragraphElement.appendChild(parameterElement);
+
+    sectionElement.appendChild(paragraphElement);
 
     const articleElement = document.createElement("article");
     sectionElement.appendChild(articleElement);

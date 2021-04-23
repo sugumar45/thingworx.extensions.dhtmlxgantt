@@ -192,6 +192,23 @@ main section.dhtmlxgantt-dialog-header-config ul li {
   padding: 4px;
 }
 
+.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config p {
+  font-size: 18px;
+}
+
+.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config p font.fn {
+  color: #708;
+  margin-right: 10px;
+}
+
+.dhtmlxgantt-dialog
+  main
+  section.dhtmlxgantt-dialog-tooltip-config
+  p
+  font.fnname {
+  color: #00f;
+}
+
 .dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config article {
   border: 1px solid var(--dark);
 }
