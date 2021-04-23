@@ -37,7 +37,7 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
 
         <header>
             <ul>
-                <li>
+                <li class="active">
                     <span id="${BASEID}-header">
                       header
                     </span>
@@ -47,7 +47,7 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
                       column
                     </span>
                 </li>
-                <li class="active">
+                <li>
                     <span id="${BASEID}-tooltip">
                       tool-tip
                     </span>
@@ -61,9 +61,9 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
         </header>
 
         <main>
-            <section class="${BASEID}-header-config inVisible"></section>
+            <section class="${BASEID}-header-config"></section>
             <section class="${BASEID}-column-config inVisible"></section>
-            <section class="${BASEID}-tooltip-config"></section>
+            <section class="${BASEID}-tooltip-config inVisible"></section>
             <section class="${BASEID}-config-config inVisible">config</section>
         </main>
 
@@ -123,6 +123,8 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
           this.jqElement
             .querySelector(`.${BASEID} main section.${id}-config`)
             .classList.remove("inVisible");
+
+          tooltipCode && tooltipCode.refresh();
         });
       });
 
@@ -352,6 +354,9 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     const sectionElement = this.jqElement.querySelector(
       `.${BASEID} main section[class*=-tooltip-config]`
     );
+
+    const commentElement = document.createElement("h3");
+    sectionElement.appendChild(commentElement);
 
     const articleElement = document.createElement("article");
     sectionElement.appendChild(articleElement);

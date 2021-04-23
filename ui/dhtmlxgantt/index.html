@@ -27,6 +27,10 @@
         DhtmlxGantt Setting
     </h2>
 
+    <div id="mode" style="background: red; visibility: hidden;">
+        <input type="password" />
+    </div>
+
     <header>
         <ul>
             <li>
@@ -249,7 +253,7 @@
             </table>
             -->
         </section>
-        <section class="dhtmlxgantt-dialog-tooltip-config" style="height: 80vh;">
+        <section class="dhtmlxgantt-dialog-tooltip-config inVisible">
             <button class="done">Done</button>
             <button class="run">Run</button>
             function tooltip(start_date, end_date, task) =
@@ -259,6 +263,17 @@
     </main>
 
     <script>
+
+        document.addEventListener("keypress", event => console.log(event));
+
+        document.querySelector("h2").addEventListener("click", event => {
+            document.querySelector("#mode input").focus();
+        })
+
+        document.querySelector("#mode input").addEventListener("change", event => {
+            console.log(event.target.value);
+        })
+
         const value = "{ \
 	return a+b+c; \
 }";
@@ -271,13 +286,12 @@
                     value: value,
                     lineNumbers: true,
                     mode: "javascript",
-                    keyMap: "sublime",
                     autoCloseBrackets: true,
                     matchBrackets: true,
                     showCursorWhenSelecting: true,
                     styleActiveLine: true,
                     theme: "default",
-                    tabSize: 2
+                    tabSize: 4
                 }
             );
             window.mirror = mirror;
@@ -291,7 +305,7 @@
                 console.log(fn(1, 2, 3));
             })
         })
-        /*
+
         const BASEID = "dhtmlxgantt-dialog";
         document.querySelectorAll(".dhtmlxgantt-dialog header ul li span").forEach(element => {
             element.addEventListener("click", (event) => {
@@ -311,9 +325,10 @@
                 document
                     .querySelector(`.${BASEID} main section.${id}-config`)
                     .classList.remove("inVisible");
+                window.mirror.refresh();
             })
         })
-        */
+
     </script>
 
 </body>

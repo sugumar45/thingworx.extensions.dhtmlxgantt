@@ -140,8 +140,10 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
     TW.IDE.updateWidgetPropertiesWindow();
   };
 
+  // TW.IDE.Workspace.workspaceMashupsHelper.Current.entityModel.uiSettings.mashupModel.SelectedWidgetModel.developerMode()
   this.developerMode = () => changeMode(true);
 
+  // TW.IDE.Workspace.workspaceMashupsHelper.Current.entityModel.uiSettings.mashupModel.SelectedWidgetModel.normalMode()
   this.normalMode = () => changeMode(false);
 
   this.afterSetProperty = (name, value) => {
