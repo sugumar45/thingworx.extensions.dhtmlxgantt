@@ -107,6 +107,7 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
           description: "",
           baseType: "JSON",
           isBindingTarget: true,
+          isEditable: false,
         },
         markers: {
           description: "",
