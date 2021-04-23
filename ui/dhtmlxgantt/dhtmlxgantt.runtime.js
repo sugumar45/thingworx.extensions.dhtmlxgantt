@@ -156,29 +156,52 @@ TW.Runtime.Widgets.dhtmlxgantt = function () {
 
   this.renderStyles = () => {
     const jqElementId = thisWidget.jqElementId;
+
     /* Widget Style */
-    const HeaderStyle = TW.getStyleFromStyleDefinition(
+    const headerStyle = TW.getStyleFromStyleDefinition(
       thisWidget.getProperty("headerStyle")
     );
 
-    const HeaderStyleBG = TW.getStyleCssGradientFromStyle(HeaderStyle);
-    const HeaderStyleBorder = TW.getStyleCssBorderFromStyle(HeaderStyle);
-    const HeaderStyleText = TW.getStyleCssTextualNoBackgroundFromStyle(
-      HeaderStyle
+    const headerStyleBG = TW.getStyleCssGradientFromStyle(headerStyle);
+    const headerStyleBorder = TW.getStyleCssBorderFromStyle(headerStyle);
+    const headerStyleText = TW.getStyleCssTextualNoBackgroundFromStyle(
+      headerStyle
     );
-    const HeaderStyleLabelText = TW.getStyleCssTextualNoBackgroundFromStyle(
-      HeaderStyle
+    const headerStyleLabelText = TW.getStyleCssTextualNoBackgroundFromStyle(
+      headerStyle
     );
-    const HeaderStyleLabelTextSize = TW.getTextSize(HeaderStyle.textSize);
+    const headerStyleLabelTextSize = TW.getTextSize(headerStyle.textSize);
+
+    /* Tooltip Style */
+    const tooltipSyle = TW.getStyleFromStyleDefinition(
+      thisWidget.getProperty("tooltipStyle")
+    );
+    const tooltipStyleBG = TW.getStyleCssGradientFromStyle(tooltipSyle);
+    const tooltipStyleBorder = TW.getStyleCssBorderFromStyle(tooltipSyle);
+    const tooltipStyleText = TW.getStyleCssTextualNoBackgroundFromStyle(
+      tooltipSyle
+    );
+    const tooltipStyleLabelText = TW.getStyleCssTextualNoBackgroundFromStyle(
+      tooltipSyle
+    );
+    const tooltipStyleLabelTextSize = TW.getTextSize(tooltipSyle.textSize);
 
     const widgetStyles = `
 				#${jqElementId}.widget-dhtmlxgantt header {
-					${HeaderStyleBG}
-					${HeaderStyleBorder}
-					${HeaderStyleText}
-					${HeaderStyleLabelText}
-					${HeaderStyleLabelTextSize}
+					${headerStyleBG}
+					${headerStyleBorder}
+					${headerStyleText}
+					${headerStyleLabelText}
+					${headerStyleLabelTextSize}
 				}
+        div.gantt_tooltip {
+          ${tooltipStyleBG}
+          ${tooltipStyleBorder}
+          ${tooltipStyleText}
+          ${tooltipStyleLabelText}
+          ${tooltipStyleLabelTextSize}
+          z-index: 9999;
+        }
 				`;
     return widgetStyles;
   };

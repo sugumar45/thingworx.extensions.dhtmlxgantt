@@ -83,7 +83,12 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
         headerStyle: {
           description: "",
           baseType: "STYLEDEFINITION",
-          defaultValue: "DefaultDhtmlxGanttHeaderStyle",
+          defaultValue: "DefaultTableHeaderStyle",
+        },
+        tooltipStyle: {
+          description: "",
+          baseType: "STYLEDEFINITION",
+          defaultValue: "DefaultTooltipStyle",
         },
         selectorOptions: {
           description: "",
@@ -107,6 +112,7 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
           description: "",
           baseType: "JSON",
           isBindingTarget: true,
+          isEditable: false,
         },
         markers: {
           description: "",
