@@ -265,17 +265,6 @@
     </main>
 
     <script>
-
-        document.addEventListener("keypress", event => console.log(event));
-
-        document.querySelector("h2").addEventListener("click", event => {
-            document.querySelector("#mode input").focus();
-        })
-
-        document.querySelector("#mode input").addEventListener("change", event => {
-            console.log(event.target.value);
-        })
-
         const value = "{ \
 	return a+b+c; \
 }";
@@ -297,15 +286,6 @@
                 }
             );
             window.mirror = mirror;
-            let fn;
-            document.querySelector(`.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config button.done`).addEventListener("click", (event) => {
-                const fn_string = mirror.getValue();
-                console.log(fn_string.trim());
-                fn = new Function('a', 'b', 'c', fn_string.trim());
-            });
-            document.querySelector(`.dhtmlxgantt-dialog main section.dhtmlxgantt-dialog-tooltip-config button.run`).addEventListener("click", event => {
-                console.log(fn(1, 2, 3));
-            })
         })
 
         const BASEID = "dhtmlxgantt-dialog";
