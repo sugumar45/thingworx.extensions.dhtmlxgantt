@@ -110,7 +110,7 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
         ganttConfig: {
           description: "",
           baseType: "STRING",
-          defaultValue: {},
+          defaultValue: "",
           isVisible: false,
         },
         ganttData: {
