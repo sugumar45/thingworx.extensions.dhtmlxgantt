@@ -291,8 +291,7 @@ TW.Runtime.Widgets.dhtmlxgantt = function () {
 
     /* Gantt Config */
     const tempConfig = thisWidget.getProperty("ganttConfig");
-    const ganttConfig =
-      typeof tempConfig === "object" ? tempConfig : JSON.parse(tempConfig);
+    const ganttConfig = JSON.parse(tempConfig);
 
     gantt.config = {
       ...gantt.config,

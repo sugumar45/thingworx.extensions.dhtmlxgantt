@@ -64,6 +64,11 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
       customEditorMenuText: "DhtmlxGantt Setting",
       category: ["Charts"],
       properties: {
+        isDeveloperMode: {
+          description: "",
+          baseType: "BOOLEAN",
+          isVisible: false,
+        },
         headers: {
           description: "",
           baseType: "JSON",
@@ -104,7 +109,7 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
         },
         ganttConfig: {
           description: "",
-          baseType: "JSON",
+          baseType: "STRING",
           defaultValue: {},
           isVisible: false,
         },
@@ -130,32 +135,17 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
       },
     };
   };
-
-  const changeMode = (developermode) => {
-    const DEVMODE = ["ganttConfig", "tooltip"];
-    const allWidgetProps = thisWidget.allWidgetProperties().properties;
-    DEVMODE.forEach((dev) => {
-      allWidgetProps[dev].isVisible = developermode;
-    });
-    TW.IDE.updateWidgetPropertiesWindow();
+  const modeChange = (value) => {
+    thisWidget.setProperty("isDeveloperMode", value);
   };
 
-  // TW.IDE.Workspace.workspaceMashupsHelper.Current.entityModel.uiSettings.mashupModel.SelectedWidgetModel.developerMode()
-  this.developerMode = () => changeMode(true);
+  this.developerMode = () => modeChange(true);
 
-  // TW.IDE.Workspace.workspaceMashupsHelper.Current.entityModel.uiSettings.mashupModel.SelectedWidgetModel.normalMode()
-  this.normalMode = () => changeMode(false);
+  this.normalMode = () => modeChange(false);
 
   this.afterSetProperty = (name, value) => {
     let refreshHtml = false;
     switch (name) {
-      case "Description":
-        if (value === "developermode") {
-          this.developerMode();
-        } else {
-          this.normalMode();
-        }
-        break;
       case "headers":
       case "headerStyle":
       case "selectorOptions":
@@ -173,6 +163,7 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
     `<div class="widget-content widget-dhtmlxgantt"></div>`;
 
   const appendHeaderSide = (side) => {
+    thisWidget.setProperty("isDeveloperMode", false);
     const headers = thisWidget.getProperty("headers");
     const properties =
       typeof headers === "object" ? headers[side] : JSON.parse(headers)[side];
@@ -276,9 +267,7 @@ TW.IDE.Widgets.dhtmlxgantt = function () {
 
     /* Gantt Config */
     const tempConfig = thisWidget.getProperty("ganttConfig");
-    const ganttConfig =
-      typeof tempConfig === "object" ? tempConfig : JSON.parse(tempConfig);
-
+    const ganttConfig = JSON.parse(tempConfig);
     gantt.config = {
       ...gantt.config,
       ...ganttConfig,

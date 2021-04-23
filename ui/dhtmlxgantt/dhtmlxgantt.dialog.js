@@ -24,11 +24,23 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     },
   ];
 
-  let thisWidget;
-  let tooltipCode;
+  const CODEMIRROROPTION = {
+    lineNumbers: true,
+    mode: "javascript",
+    keyMap: "sublime",
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    styleActiveLine: true,
+    showCursorWhenSelecting: true,
+    theme: "default",
+    tabSize: 2,
+  };
+
+  let thisWidget, tooltipCode, developerCode;
 
   this.renderDialogHtml = (widgetObj) => {
     thisWidget = widgetObj;
+    const isDeveloperMode = thisWidget.getProperty("isDeveloperMode");
 
     return `<div class="widget-content ${BASEID}">
         <h2>
@@ -52,11 +64,16 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
                       tool-tip
                     </span>
                 </li>
-                <li class="inVisible">
-                    <span id="${BASEID}-config">
-                      config
-                    </span>
-                </li>
+                ${
+                  isDeveloperMode
+                    ? `<li>
+                        <span id="${BASEID}-developer">
+                          developer
+                        </span>
+                    </li>`
+                    : ``
+                }
+                
             </ul>
         </header>
 
@@ -64,7 +81,7 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
             <section class="${BASEID}-header-config"></section>
             <section class="${BASEID}-column-config inVisible"></section>
             <section class="${BASEID}-tooltip-config inVisible"></section>
-            <section class="${BASEID}-config-config inVisible">config</section>
+            <section class="${BASEID}-developer-config inVisible"></section>
         </main>
 
     </div>`;
@@ -125,6 +142,7 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
             .classList.remove("inVisible");
 
           tooltipCode && tooltipCode.refresh();
+          developerCode && developerCode.refresh();
         });
       });
 
@@ -141,6 +159,10 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     /* tooltip Tab Add START */
     tooltipDialogSectionAppend();
     /* tooltip Tab Add END */
+
+    /* developer Tab Add START */
+    developerDialogSectionAppend();
+    /* developer Tab Add END */
   };
 
   const headerDialogSectionAppend = () => {
@@ -378,16 +400,23 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     sectionElement.appendChild(articleElement);
 
     tooltipCode = CodeMirror(articleElement, {
+      ...CODEMIRROROPTION,
       value: tooltipValue,
-      lineNumbers: true,
-      mode: "javascript",
-      keyMap: "sublime",
-      autoCloseBrackets: true,
-      matchBrackets: true,
-      styleActiveLine: true,
-      showCursorWhenSelecting: true,
-      theme: "default",
-      tabSize: 2,
+    });
+  };
+
+  const developerDialogSectionAppend = () => {
+    const ganttConfigValue = thisWidget.getProperty("ganttConfig");
+    const sectionElement = this.jqElement.querySelector(
+      `.${BASEID} main section[class*=-developer-config]`
+    );
+
+    const articleElement = document.createElement("article");
+    sectionElement.appendChild(articleElement);
+
+    developerCode = CodeMirror(articleElement, {
+      ...CODEMIRROROPTION,
+      value: ganttConfigValue,
     });
   };
 
@@ -446,6 +475,10 @@ TW.IDE.Dialogs.GanttCustomEditor = function () {
     /* tooltip Set Property END */
     widgetObj.setProperty("tooltip", tooltipCode.getValue());
     /* tooltip Set Property END */
+
+    /* ganttConfig Set Property END */
+    widgetObj.setProperty("ganttConfig", developerCode.getValue());
+    /* ganttConfig Set Property END */
 
     return true;
   };
